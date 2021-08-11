@@ -1,11 +1,14 @@
 <%= javascript_include_tag Ckeditor.cdn_url %> 
 
   <script>
-    $(function() {
+    var load_ckeditor = function() {
       <% ids.each do |id| %>
         if ($("#<%= id %>").length > 0) {
           CKEDITOR.replace("<%= id %>", {"customConfig": "<%= javascript_url 'ckeditor/config.js' %>" });
         }
       <% end %>
-    });
+    };
+    $(function(){   
+      load_ckeditor();
+    })
 </script>
